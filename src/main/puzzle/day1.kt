@@ -1,4 +1,4 @@
-package main.day1
+package main.puzzle
 
 import java.io.File
 

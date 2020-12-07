@@ -1,4 +1,4 @@
-package main.day2
+package main.puzzle
 
 import java.io.File
 import java.util.regex.Pattern

@@ -1,4 +1,4 @@
-package main.day3
+package main.puzzle
 
 import java.io.File
 import java.math.BigDecimal
@@ -40,11 +40,11 @@ data class TreeMap(
 
     fun parse(rows: List<String>): TreeMap {
       val sliceWidth = rows[0].length
-      val trees = rows.map(::mapRow)
+      val trees = rows.map(Parser::mapRow)
       return TreeMap(trees, sliceWidth, rows.size)
     }
 
-    private fun mapRow(row: String): List<Boolean> = row.map(::mapChar)
+    private fun mapRow(row: String): List<Boolean> = row.map(Parser::mapChar)
     private fun mapChar(char: Char): Boolean = when (char) {
       '.' -> false
       '#' -> true
