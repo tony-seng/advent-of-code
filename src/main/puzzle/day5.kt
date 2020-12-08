@@ -10,14 +10,14 @@ fun main() {
     part2(inputs)
 }
 
-fun part1(inputs: List<String>) {
+private fun part1(inputs: List<String>) {
     val result = inputs.map {
         calculateRow(it.take(7)) * 8 + calculateColumn(it.takeLast(3))
     }.maxOrNull()
     println("Part 1 = $result")
 }
 
-fun part2(inputs: List<String>) {
+private fun part2(inputs: List<String>) {
     var seatGrid : Array<Array<Int?>> = Array(128) { arrayOfNulls(8) }
     inputs.forEach {
         val i = calculateRow(it.take(7))
@@ -33,7 +33,7 @@ fun part2(inputs: List<String>) {
     }
 }
 
-fun calculateRow(rowCharacter: String) : Int {
+private fun calculateRow(rowCharacter: String) : Int {
     var start = 0
     var end = 128
     for(i in rowCharacter.indices) {
@@ -45,7 +45,7 @@ fun calculateRow(rowCharacter: String) : Int {
     return min(start, end)
 }
 
-fun calculateColumn(columnCharacter: String) : Int {
+private fun calculateColumn(columnCharacter: String) : Int {
     var start = 0
     var end = 8
     for(i in columnCharacter.indices) {
