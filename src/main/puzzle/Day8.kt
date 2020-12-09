@@ -3,7 +3,7 @@ package main.puzzle
 import java.io.File
 
 fun main() {
-  var executed: MutableSet<Int> = mutableSetOf()
+  val executed: MutableSet<Int> = mutableSetOf()
   part1(instructions, executed)
   part2(executed)
 }
@@ -32,7 +32,7 @@ private fun part1(instructions: List<List<String>>, executed: MutableSet<Int>) :
 }
 
 private fun part2(executed: MutableSet<Int>) {
-  var originalProgram = instructions
+  val originalProgram = instructions
   for (i in executed.size - 2 downTo 0) {
     val lastExecuted = executed.elementAt(i)
     if (originalProgram[lastExecuted][0] == "jmp") {
