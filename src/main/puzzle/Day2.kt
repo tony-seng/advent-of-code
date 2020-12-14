@@ -40,7 +40,7 @@ private fun countOccurrences(s: String, ch: Char): Int {
 private fun part2() {
     var valid = 0
     File("src/main/resources/input/2.txt").readLines().map {
-        var parts = it.split(" ")
+        val parts = it.split(" ")
         val numbers = parts[0].split("-")
         var charCount = 0
         if(parts[2].length > numbers[1].toInt()-1) {
