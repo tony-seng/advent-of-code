@@ -1,13 +1,11 @@
 package main.puzzle
 
-import java.io.File
-
 fun main() {
     println("Part1 = ${solve(2020)}")
     println("Part2 = ${solve(30_000_000)}")
 }
 
-private val startingNumbers = "6,13,1,15,2,0".split(",").map { it.toInt() }
+private val startingNumbers = "7,12,1,0,16,2".split(",").map { it.toInt() }
 
 private fun memoryGame(startingNumbers: List<Int>): Sequence<Int> = sequence {
     yieldAll(startingNumbers)
