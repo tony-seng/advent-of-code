@@ -4,7 +4,7 @@ import java.io.File
 
 fun main() {
     val inputs = File("src/main/resources/input/9.txt").readLines().
-            map{ it.toLong() }
+            map(String::toLong)
 
     println("Part 1 = ${part1(inputs)}")
     println("Part 2 = ${part2(inputs)}")
@@ -21,7 +21,7 @@ private fun part1(data : List<Long>): Long {
     throw RuntimeException("Unable to find result!")
 }
 
-fun findPairs(data: List<Long>, target: Long): Boolean {
+private fun findPairs(data: List<Long>, target: Long): Boolean {
     return data.mapNotNull { first ->
         data.find { second ->
             first + second == target && first != second
@@ -29,7 +29,7 @@ fun findPairs(data: List<Long>, target: Long): Boolean {
     }.isNotEmpty()
 }
 
-fun part2(data: List<Long>): Long {
+private fun part2(data: List<Long>): Long {
     val target = part1(data)
 
     for (index in data.indices) {

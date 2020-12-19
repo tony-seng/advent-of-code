@@ -6,36 +6,43 @@ import kotlin.math.min
 
 fun main() {
     val inputs: List<String> = File("src/main/resources/input/5.txt").readLines()
-    part1(inputs)
-    part2(inputs)
+    println("Part1 = ${findHighestSeatId(inputs)}")
+    println("Part2 = ${findSeat(inputs)}")
 }
 
-private fun part1(inputs: List<String>) {
-    val result = inputs.map {
-        calculateRow(it.take(7)) * 8 + calculateColumn(it.takeLast(3))
+private const val ROW_CHAR_NB = 7
+private const val COLUMN_CHAR_NB = 3
+private const val ROW_MULTIPLIER = 8
+private const val NUMBER_OF_ROW = 128
+private const val NUMBER_OF_COLUMN = 8
+
+private fun findHighestSeatId(inputs: List<String>) = inputs.map {
+        calculateSeatId(calculateRow(it.take(ROW_CHAR_NB)), calculateColumn(it.takeLast(COLUMN_CHAR_NB)))
     }.maxOrNull()
-    println("Part 1 = $result")
-}
 
-private fun part2(inputs: List<String>) {
-    var seatGrid : Array<Array<Int?>> = Array(128) { arrayOfNulls(8) }
+
+private fun findSeat(inputs: List<String>) : Int {
+    val seatGrid : Array<Array<Int?>> = Array(NUMBER_OF_ROW) { arrayOfNulls(NUMBER_OF_COLUMN) }
     inputs.forEach {
-        val i = calculateRow(it.take(7))
-        val j = calculateColumn(it.takeLast(3))
-        seatGrid[i][j] = 1
+        val row = calculateRow(it.take(ROW_CHAR_NB))
+        val column = calculateColumn(it.takeLast(COLUMN_CHAR_NB))
+        seatGrid[row][column] = 1
     }
-    for (i in 0..127) {
-        for(j in 0..7) {
-            if(seatGrid[i][j] == null) {
-                println("Row: $i and column: $j and seatId = ${i * 8 + j}")
+    for (i in seatGrid.indices) {
+        if(seatGrid[i].any { it == 1 }) {
+            for (j in seatGrid[i].indices) {
+                if (seatGrid[i][j] == null && i>0 && j>0 && seatGrid[i-1][j-1] != null) {
+                    return calculateSeatId(i, j)
+                }
             }
         }
     }
+    return 0
 }
 
 private fun calculateRow(rowCharacter: String) : Int {
     var start = 0
-    var end = 128
+    var end = NUMBER_OF_ROW
     for(i in rowCharacter.indices) {
         when(rowCharacter[i]) {
             'F' -> end -= (end - start) / 2
@@ -47,7 +54,7 @@ private fun calculateRow(rowCharacter: String) : Int {
 
 private fun calculateColumn(columnCharacter: String) : Int {
     var start = 0
-    var end = 8
+    var end = NUMBER_OF_COLUMN
     for(i in columnCharacter.indices) {
         when(columnCharacter[i]) {
             'L' -> end -= (end - start) / 2
@@ -56,3 +63,5 @@ private fun calculateColumn(columnCharacter: String) : Int {
     }
     return max(start, end) - 1
 }
+
+private fun calculateSeatId(row: Int, column: Int) = row * ROW_MULTIPLIER + column

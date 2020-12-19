@@ -42,11 +42,11 @@ private fun generateAddressMasks(value: String, mask: String): List<Long> {
             'X' -> {
                 addresses.forEach { it[idx] = '1' }
                 addresses.addAll(
-                        addresses.map {
-                            it.copyOf().apply {
-                                this[idx] = '0'
-                            }
+                    addresses.map {
+                        it.copyOf().apply {
+                            this[idx] = '0'
                         }
+                    }
                 )
             }
         }
@@ -65,7 +65,6 @@ private fun part2(inputs: List<String>): Long {
             generateAddressMasks(unmaskedAddress, mask).forEach { address ->
                 memory[address] = value
             }
-
         }
     }
     return memory.values.sum()

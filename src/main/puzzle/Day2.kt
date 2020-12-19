@@ -4,57 +4,55 @@ import java.io.File
 import java.util.regex.Pattern
 
 fun main() {
-    part1()
-    part2()
+    val passwordRules = File("src/main/resources/input/2.txt").readLines()
+    println("Part1 = ${countValidPasswords(passwordRules)}")
+    println("Part2 = ${countValidPasswords2(passwordRules)}")
 }
 
-private fun part1() {
-    var count = 0
-    File("src/main/resources/input/2.txt").readLines().map { if(isCorrect(it)) count++ }
-    println("Part1 = $count")
-}
+private fun countValidPasswords(passwordRules: List<String>) : Int =
+        passwordRules.filter { passwordRule ->
+            isCorrect(passwordRule)
+        }.count()
+
 
 private fun isCorrect(passwordRule: String) : Boolean {
     val passwordRulePart = passwordRule.split(" ")
     val numbers = passwordRulePart[0].split("-")
-    if(checkPasswordRule(numbers[0].toInt(), numbers[1].toInt(), passwordRulePart[1][0], passwordRulePart[2])) {
-        return true
-    }
-    return false
+    return checkPasswordRule(numbers[0].toInt()..numbers[1].toInt(),
+            passwordRulePart[1][0],
+            passwordRulePart[2])
 }
 
-private fun checkPasswordRule(number1: Int, number2: Int, char: Char, password: String) : Boolean {
-    val countChar = countOccurrences(password, char)
-    return countChar in number1..number2
+private fun checkPasswordRule(range: IntRange, charToCount: Char, password: String) : Boolean {
+    val countChar = password.filter { char ->
+        char == charToCount
+    }.count()
+    return countChar in range
 }
 
-private fun countOccurrences(s: String, ch: Char): Int {
-    val matcher = Pattern.compile(ch.toString()).matcher(s)
-    var counter = 0
-    while (matcher.find()) {
-        counter++
-    }
-    return counter
-}
-
-private fun part2() {
-    var valid = 0
-    File("src/main/resources/input/2.txt").readLines().map {
-        val parts = it.split(" ")
+private fun countValidPasswords2(passwordRules: List<String>) : Int {
+    var validCount = 0
+    passwordRules.map { rule ->
+        val parts = rule.split(" ")
         val numbers = parts[0].split("-")
+        val firstIndexToCheck = numbers[0].toInt() - 1
+        val secondIndexToCheck = numbers[1].toInt() - 1
+        val charToChek = parts[1][0]
         var charCount = 0
-        if(parts[2].length > numbers[1].toInt()-1) {
-            if (parts[2][numbers[0].toInt()-1] == parts[1][0]) {
+        val password = parts[2]
+        if(password.length > secondIndexToCheck) {
+            if (password[firstIndexToCheck] == charToChek) {
                 charCount++;
             }
-            if (parts[2][numbers[1].toInt()-1] == parts[1][0]){
+            if (password[secondIndexToCheck] == charToChek) {
                 charCount++;
             }
         }
         if (charCount == 1) {
-            valid++;
+            validCount++;
         }
     }
-    println("Part1 = $valid")
+    return validCount
 }
+
 
