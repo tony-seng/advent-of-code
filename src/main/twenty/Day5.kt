@@ -1,11 +1,11 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 import kotlin.math.max
 import kotlin.math.min
 
 fun main() {
-    val inputs: List<String> = File("src/main/resources/input/5.txt").readLines()
+    val inputs: List<String> = File("src/main/resources/twenty/5.txt").readLines()
     println("Part1 = ${findHighestSeatId(inputs)}")
     println("Part2 = ${findSeat(inputs)}")
 }

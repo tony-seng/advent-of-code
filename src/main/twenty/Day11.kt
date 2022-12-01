@@ -5,7 +5,7 @@ fun main() {
     println(part2())
 }
 
-private val seats = File("src/main/resources/input/11.txt").readLines().map { it.toList() }
+private val seats = File("src/main/resources/twenty/11.txt").readLines().map { it.toList() }
 
 private fun part1(): Int {
     var seatsBefore: List<List<Char>>

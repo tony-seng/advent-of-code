@@ -1,10 +1,9 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
-import java.util.regex.Pattern
 
 fun main() {
-    val passwordRules = File("src/main/resources/input/2.txt").readLines()
+    val passwordRules = File("src/main/resources/twenty/2.txt").readLines()
     println("Part1 = ${countValidPasswords(passwordRules)}")
     println("Part2 = ${countValidPasswords2(passwordRules)}")
 }

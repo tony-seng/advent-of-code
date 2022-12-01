@@ -1,9 +1,9 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 
 fun main() {
-    val answersPerGroup: List<String> = File("src/main/resources/input/6.txt").readText().split("\n\n")
+    val answersPerGroup: List<String> = File("src/main/resources/twenty/6.txt").readText().split("\n\n")
     println("Part1 = " + part1(answersPerGroup))
     println("Part2 = " + part2(answersPerGroup))
 }

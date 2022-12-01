@@ -1,8 +1,8 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 
-private val inputs = File("src/main/resources/input/16.txt").readText().split("\n\n")
+private val inputs = File("src/main/resources/twenty/16.txt").readText().split("\n\n")
 private val rules: Map<String, List<IntRange>> = inputs[0].split("\n").map {
     val rulePart = it.split(": ")
     val ranges = rulePart[1].split(" or ")

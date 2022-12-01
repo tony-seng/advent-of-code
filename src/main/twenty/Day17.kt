@@ -1,4 +1,4 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 
@@ -7,7 +7,7 @@ fun main() {
   println("Part2 = ${part2()}")
 }
 
-private val inputs = File("src/main/resources/input/17.txt").readLines()
+private val inputs = File("src/main/resources/twenty/17.txt").readLines()
 
 private fun part1() =
     solve { x, y ->

@@ -1,4 +1,4 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 
@@ -7,7 +7,7 @@ fun main() {
   println("Part2 = ${part2()}")
 }
 
-private val inputs = File("src/main/resources/input/19.txt").readLines()
+private val inputs = File("src/main/resources/twenty/19.txt").readLines()
 private val rules: MutableMap<Int, List<List<Rule>>> = parseRules(inputs)
 private val messages: List<String> = inputs.dropWhile { it.isNotBlank() }.drop(1)
 

@@ -1,4 +1,4 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 
@@ -13,7 +13,7 @@ fun Iterable<Long>.product(): Long =
 fun Char.asLong(): Long =
     this.toString().toLong()
 
-private val inputs = File("src/main/resources/input/18.txt").readLines()
+private val inputs = File("src/main/resources/twenty/18.txt").readLines()
 
 private val equations = inputs.map { it.replace(" ", "") }
 

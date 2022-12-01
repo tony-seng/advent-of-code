@@ -1,4 +1,4 @@
-package main.puzzle
+package main.twenty
 
 fun main() {
     println("Part1 = ${solve(2020)}")

@@ -1,4 +1,4 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 
@@ -7,7 +7,7 @@ fun main() {
   println("Part1 = ${part2()}")
 }
 
-private val input = File("src/main/resources/input/21.txt").readLines()
+private val input = File("src/main/resources/twenty/21.txt").readLines()
 
 private val food: Map<Set<String>, Set<String>> = input.map { line ->
   val ingredients = line.substringBefore(" (").split(" ").toSet()

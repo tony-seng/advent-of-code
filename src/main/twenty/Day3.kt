@@ -1,4 +1,4 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 import java.math.BigDecimal
@@ -8,7 +8,7 @@ fun main() {
   day3()
 }
 
-fun day3(input: List<String> = File("src/main/resources/input/3.txt").readLines()) {
+fun day3(input: List<String> = File("src/main/resources/twenty/3.txt").readLines()) {
   val map = TreeMap.parse(input)
   val slope = Slope(3, 1)
   val part1 = countTreesHit(map, slope)

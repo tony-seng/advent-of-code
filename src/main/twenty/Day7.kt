@@ -1,4 +1,4 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 
@@ -7,7 +7,7 @@ fun main() {
   part2()
 }
 
-private val bagsRules = File("src/main/resources/input/7.txt")
+private val bagsRules = File("src/main/resources/twenty/7.txt")
     .readLines()
     .associate { line ->
       val (bag, contents) = line.split(" bags contain ")

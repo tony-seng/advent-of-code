@@ -1,10 +1,10 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 import kotlin.math.absoluteValue
 
 fun main() {
-  val inputs = File("src/main/resources/input/12.txt").readLines()
+  val inputs = File("src/main/resources/twenty/12.txt").readLines()
       .map { it.first() to it.drop(1).toInt() }
   println("Part 1= ${part1(inputs)}")
   println("Part 2= ${part2(inputs)}")

@@ -1,8 +1,8 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 
-private val inputs = File("src/main/resources/input/13.txt").readLines()
+private val inputs = File("src/main/resources/twenty/13.txt").readLines()
 private val startTime: Int = inputs.first().toInt()
 private val busses: List<Int> = inputs
         .last()

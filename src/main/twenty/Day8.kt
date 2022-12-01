@@ -1,4 +1,4 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 
@@ -8,7 +8,7 @@ fun main() {
   part2(executed)
 }
 
-private val instructions = File("src/main/resources/input/8.txt").readLines()
+private val instructions = File("src/main/resources/twenty/8.txt").readLines()
     .map {
        instruction -> instruction.split(" ")
     }.toMutableList()

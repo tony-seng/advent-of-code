@@ -1,9 +1,9 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 
 fun main() {
-    val inputs = File("src/main/resources/input/9.txt").readLines().
+    val inputs = File("src/main/resources/twenty/9.txt").readLines().
             map(String::toLong)
 
     println("Part 1 = ${part1(inputs)}")

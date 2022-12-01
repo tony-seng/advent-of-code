@@ -1,4 +1,4 @@
-package main.puzzle
+package main.twenty
 
 import java.io.File
 
@@ -19,7 +19,7 @@ private val fieldPatterns = listOf(
     ).map { it.toRegex() }
 
 fun day4() {
-    val passports : List<String> = File("src/main/resources/input/4.txt").readText().split("\n\n")
+    val passports : List<String> = File("src/main/resources/twenty/4.txt").readText().split("\n\n")
 
     val validPassportPart1 = passports.count{ passport -> PASSPORT_ATTRIBUTES.all { passport.contains(it)}}
     println(validPassportPart1)
